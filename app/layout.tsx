@@ -1,4 +1,14 @@
 import type { Metadata } from "next";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignIn,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,12 +33,73 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <div className="flex flex-col items-center justify-between w-full h-full min-h-screen">
+            <div className="flex flex-col items-start justify-start w-full">
+              <div className="flex flex-row items-center justify-center w-full h-10 min-h-6 bg-secondary">
+                <p className="text-secondary-content text-sm">
+                  This is currently a beta version of the Synaptic AI. We are
+                  currently working on adding more features and improving the
+                  user experience. Please reach out to us if you have any
+                  feedback or suggestions. Thank you!
+                </p>
+              </div>
+              <div className="flex flex-row items-center justify-end w-full h-10 min-h-6">
+                <div className="mr-3 mt-2">
+                  <SignedIn>
+                    <UserButton />
+                  </SignedIn>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-row items-center justify-center gap-5 w-full">
+              <span className="text-4xl font-bold items-center">
+                Welcome to Synaptic AI
+              </span>
+            </div>
+
+            <SignedOut>
+              <div className="flex flex-row gap-4">
+                <SignInButton mode="modal">
+                  <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    Sign In
+                  </button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+                    Sign Up
+                  </button>
+                </SignUpButton>
+              </div>
+            </SignedOut>
+            {children}
+
+            <footer className="footer place-items-center sm:footer-horizontal bg-neutral text-neutral-content p-10">
+              <nav>
+                <h6 className="footer-title">Reach out to Developer</h6>
+                <a
+                  className="link link-hover"
+                  href="mailto:Psriraj1902@gmail.com"
+                >
+                  Email
+                </a>
+                <a
+                  className="link link-hover"
+                  href="https://www.linkedin.com/in/sriraj-palakurthi-ab86061bb/"
+                >
+                  LinkedIn
+                </a>
+                <a className="link link-hover" href="https://github.com/Sriraj-dev">Github</a>
+              </nav>
+            </footer>
+          </div>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

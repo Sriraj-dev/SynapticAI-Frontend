@@ -1,103 +1,16 @@
-import Image from "next/image";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function Home() {
+export default async function Home() {
+
+  const user = await currentUser()
+  const username = user?.username;
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div>
+      {username && <div>Hello {username} 👋!</div>}
     </div>
   );
 }
+
+
+//eyJhbGciOiJSUzI1NiIsImNhdCI6ImNsX0I3ZDRQRDExMUFBQSIsImtpZCI6Imluc18ydjltNlhLd3dja2plSXBBVFM2Sm9jREUzMG8iLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NDU1NzQ5NDksImZ2YSI6WzUzNDcsLTFdLCJpYXQiOjE3NDU1NzQ4ODksImlzcyI6Imh0dHBzOi8vbWVhc3VyZWQtbW9ua2V5LTM1LmNsZXJrLmFjY291bnRzLmRldiIsIm5iZiI6MTc0NTU3NDg3OSwic2lkIjoic2Vzc18ydzJ5ZmZqTnZVeDdlU1VSTjExUGp6czZTbEciLCJzdWIiOiJ1c2VyXzJ2d0pxS0RSeWhld0JqQlN1QXJJTDZXWEJtMSJ9.I3a9HhMQuFWpzYpEInz6tfK4pyV58GMf8AUbiFKnUeejD45IMvZdlXgV-jAN02Feq4UJaaK3Yr5eUcsouSj4RP4ieorUv6LquIJhXefGR8LanbiG_UJYLb1MFgtwdFCodtK2_DBRRJkA2bMeb9dLVazSji6RhIFuPL5x5Txh19mG3PQR4tC6N1eI0rs7Q_15xjjlrY6MTxkdBOp_HlF6lWepLKFpZYBHk7-xEju3d4C2W-09GeTGWtfE68Tl6izfLlFdgTFTmrEvo7AcNHM5zyQIxBibE-fjPFsh_sIWHIE8vYeg5YiQP4ZHaSXhWSGxauhAcHkUd-SsMa2D_4b7DQ
