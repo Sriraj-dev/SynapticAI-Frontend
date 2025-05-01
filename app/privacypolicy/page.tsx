@@ -2,8 +2,8 @@ import React from "react";
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
+    <div className="max-w-3xl mx-auto pt-5 flex-1 w-full">
+      <h1 className="text-3xl font-bold mb-4">Synaptic AI Privacy Policy</h1>
       <p className="mb-4">
         Synaptic AI (“we,” “us,” or “our”) respects your privacy and is
         committed to protecting it through this Privacy Policy.
