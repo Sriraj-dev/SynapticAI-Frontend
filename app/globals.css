@@ -1,9 +1,14 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
+  TODO: Temporarily only dark theme is available.
+} */
+:root {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
 }
 
 @theme inline {
@@ -16,8 +21,12 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #ffffff;
   }
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 body {
