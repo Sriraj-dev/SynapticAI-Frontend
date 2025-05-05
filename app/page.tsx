@@ -6,8 +6,7 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
-import { ArrowRight, Brain, CheckCircle, Chrome, Search } from "lucide-react";
+import { ArrowRight, Brain, Chrome } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
 import TypingAnimation from "./components/dashboard/TypingAnimation";
@@ -26,9 +25,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const user = await currentUser();
-  const username = user?.username;
-
   const chrome_extension_url =
     process.env.NEXT_PUBLIC_CHROME_EXTENSION_URL || "";
 
@@ -242,8 +238,7 @@ export default async function Home() {
                   Exciting Features in Development
                 </h2>
                 <p className="text-gray-500 md:text-lg max-w-[42rem]">
-                  We're constantly improving SynapticAI. Here's what's coming
-                  next:
+                  We're constantly improving SynapticAI. Here's what's coming next:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 text-left">
                   {upcomingFeatures.map((feature, index) => (

@@ -1,14 +1,4 @@
 import { ReactNode } from "react";
-import {
-  Brain,
-  Chrome,
-  FileSearch,
-  FileText,
-  Grid3x3,
-  ListTodo,
-  Mic,
-  Search,
-} from "lucide-react";
 
 
 interface FeatureCardProps {
