@@ -16,8 +16,10 @@ import { BenefitCard } from "./components/dashboard/BenefitCard";
 import {
   benefits,
   features,
+  howItWorksSteps,
   upcomingFeatures,
 } from "./utils/constants/LandingPageConstants";
+import { HowItWorksCard } from "./components/dashboard/HowItWorksCard";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -46,16 +48,16 @@ export default async function Home() {
                 Features
               </Link>
               <Link
-                href="#benefits"
-                className="text-sm font-medium hover:underline"
-              >
-                Benefits
-              </Link>
-              <Link
                 href="#how-it-works"
                 className="text-sm font-medium hover:underline"
               >
                 How It Works
+              </Link>
+              <Link
+                href="#benefits"
+                className="text-sm font-medium hover:underline"
+              >
+                Benefits
               </Link>
             </nav>
             <div className="flex items-center gap-4">
@@ -78,15 +80,15 @@ export default async function Home() {
 
         <main className="flex-1 w-full items-center">
           {/* Hero Section */}
-          <section className="py-20 md:py-28">
+          <section className="py-28 md:py-48 min-h-screen">
             <div className="px-4 md:px-6">
               <div className="flex flex-col items-center text-center space-y-4 md:space-y-6">
                 <div className="inline-block rounded-lg bg-primary-content px-3 py-1 text-sm text-primary">
                   Introducing SynapticAI
                 </div>
-                <h1 className="text-3xl md:text-5xl font-bold tracking-tighter max-w-3xl text-foreground h-20">
+                <h1 className="text-3xl md:text-5xl font-bold tracking-tighter max-w-3xl text-foreground">
                   {/* <TypingHeading fullText="Your AI-Powered Second Brain for the Web" /> */}
-                  Your AI-Powered Second Brain for the Web
+                  Transform your Throughts Into Intelligence
                 </h1>
                 <p className="text-gray-500 md:text-xl max-w-[42rem]">
                   SynapticAI helps you capture, organize, and recall everything
@@ -118,7 +120,7 @@ export default async function Home() {
           </section>
 
           {/* Features Section */}
-          <section id="features" className="py-16 md:py-24 px-25">
+          <section id="features" className="py-16 md:py-24 md:px-25">
             <div className="px-4 md:px-6">
               <div className="flex flex-col items-center text-center space-y-4">
                 <h2 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground">
@@ -129,30 +131,28 @@ export default async function Home() {
                   your online learning experience.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+              {/* Mobile Features Grid */}
+              <div className="grid grid-cols-1 gap-8 mt-12 md:hidden">
                 {features.map((feature, index) => (
-                  <FeatureCard key={index} {...feature} />
+                  <FeatureCard
+                    key={index}
+                    {...feature}
+                    index={index}
+                    isMobile={true}
+                  />
                 ))}
               </div>
-            </div>
-          </section>
 
-          {/* Benefits Section */}
-          <section id="benefits" className="py-16 md:py-24 w-full px-25">
-            <div className="px-4 md:px-6">
-              <div className="flex flex-col w-full items-center text-center space-y-4">
-                <h2 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground">
-                  Why Choose SynapticAI
-                </h2>
-                <p className="text-gray-500 md:text-lg max-w-[42rem]">
-                  SynapticAI transforms how you learn and retain information
-                  online.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 w-full">
-                  {benefits.map((benefit, index) => (
-                    <BenefitCard key={index} {...benefit} />
-                  ))}
-                </div>
+              {/* Large screens Features Grid*/}
+              <div className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 hidden md:grid">
+                {features.map((feature, index) => (
+                  <FeatureCard
+                    key={index}
+                    {...feature}
+                    index={index}
+                    isMobile={false}
+                  />
+                ))}
               </div>
             </div>
           </section>
@@ -172,63 +172,35 @@ export default async function Home() {
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                {/* Step 1 */}
-                <div className="flex flex-col items-center text-center p-6">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600 mb-4">
-                    1
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-2"
-                    style={{ color: "#0a0a0a" }}
-                  >
-                    Install & Browse
-                  </h3>
-                  <p className="text-gray-500">
-                    Install our Chrome extension and browse the web as you
-                    normally would.
-                  </p>
-                </div>
+                {howItWorksSteps.map((x, index) => (
+                  <HowItWorksCard key={x.number} {...x} index={index} />
+                ))}
+              </div>
+            </div>
+          </section>
 
-                {/* Step 2 */}
-                <div className="flex flex-col items-center text-center p-6">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600 mb-4">
-                    2
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-2"
-                    style={{ color: "#0a0a0a" }}
-                  >
-                    Interact & Capture
-                  </h3>
-                  <p className="text-gray-500">
-                    Summarize content, take notes or create tasks—all at the
-                    snap of your fingers. SynapticAI captures it all.
-                  </p>
-                </div>
-
-                {/* Step 3 */}
-                <div className="flex flex-col items-center text-center p-6">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-100 text-purple-600 mb-4">
-                    3
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-2"
-                    style={{ color: "#0a0a0a" }}
-                  >
-                    Access & Recall
-                  </h3>
-                  <p className="text-gray-500">
-                    Effortlessly retrieve your saved knowledge through the
-                    dashboard or simply ask SynapticAI in natural language —
-                    anytime, anywhere.
-                  </p>
+          {/* Benefits Section */}
+          <section id="benefits" className="py-16 md:py-24 w-full md:px-25">
+            <div className="px-4 md:px-6">
+              <div className="flex flex-col w-full items-center text-center space-y-4">
+                <h2 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground">
+                  Why Choose SynapticAI
+                </h2>
+                <p className="text-gray-500 md:text-lg max-w-[42rem]">
+                  SynapticAI transforms how you learn and retain information
+                  online.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 w-full">
+                  {benefits.map((benefit, index) => (
+                    <BenefitCard key={index} {...benefit} />
+                  ))}
                 </div>
               </div>
             </div>
           </section>
 
           {/* Coming Soon Section */}
-          <section className="py-16 md:py-24 px-25">
+          <section className="py-16 md:py-24 md:px-25">
             <div className="px-4 md:px-6">
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="inline-block rounded-lg bg-purple-100 px-3 py-1 text-sm text-purple-800">
@@ -238,11 +210,29 @@ export default async function Home() {
                   Exciting Features in Development
                 </h2>
                 <p className="text-gray-500 md:text-lg max-w-[42rem]">
-                  We're constantly improving SynapticAI. Here's what's coming next:
+                  We're constantly improving SynapticAI. Here's what's coming
+                  next:
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 text-left">
+                {/* Mobiles Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 text-left md:hidden">
                   {upcomingFeatures.map((feature, index) => (
-                    <FeatureCard key={index} {...feature} />
+                    <FeatureCard
+                      key={index}
+                      {...feature}
+                      index={index}
+                      isMobile={true}
+                    />
+                  ))}
+                </div>
+                {/* Desktops Grid */}
+                <div className="grid-cols-1 md:grid-cols-2 gap-8 mt-12 text-left hidden md:grid">
+                  {upcomingFeatures.map((feature, index) => (
+                    <FeatureCard
+                      key={index}
+                      {...feature}
+                      index={index}
+                      isMobile={false}
+                    />
                   ))}
                 </div>
               </div>
@@ -260,12 +250,14 @@ export default async function Home() {
                   Join the SynapticAI community today
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 min-[400px]:gap-6">
-                  <Link href="#header">
-                    <button className="btn btn-soft btn-primary">
-                      Get Started Now
-                      <ArrowRight className="h-5 w-5" />
-                    </button>
-                  </Link>
+                  <AnimatedButton
+                    href="#header"
+                    target=""
+                    className="btn btn-soft btn-primary"
+                  >
+                    Get Started Now
+                    <ArrowRight className="h-5 w-5" />
+                  </AnimatedButton>
                 </div>
               </div>
             </div>
