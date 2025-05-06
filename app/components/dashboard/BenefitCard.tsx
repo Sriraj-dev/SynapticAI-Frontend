@@ -23,7 +23,7 @@ export const BenefitCard = ({
     >
       <div className="flex flex-row items-start gap-2">
         <CheckCircle className="h-6 w-6 text-green-500 mt-1 flex-shrink-0" />
-        <h3 className="text-lg font-bold mb-2">{title}</h3>
+        <h3 className="text-lg font-bold mb-2 text-left">{title}</h3>
       </div>
       <div className="pl-6 text-gray-500 text-left">{description}</div>
     </motion.div>
