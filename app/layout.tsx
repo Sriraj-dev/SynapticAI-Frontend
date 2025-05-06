@@ -1,3 +1,4 @@
+import Head from "next/head";
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -18,13 +19,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex flex-col min-h-screen">
           <div className="flex flex-row items-center justify-center w-full min-h-8 bg-secondary">
             <p className="text-secondary-content text-xs p-2 md:p-0 md:text-sm">
-              This is currently a beta version of the Synaptic AI. Have a feature you’d love to see? Drop us a note — we’re building SynapticAI with you in mind.
+              This is currently a beta version of the Synaptic AI. Have a
+              feature you’d love to see? Drop us a note — we’re building
+              SynapticAI with you in mind.
               <a
                 className="link link-hover pl-1 underline"
                 target="_blank"
