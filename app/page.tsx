@@ -19,6 +19,7 @@ import {
   howItWorksSteps,
   upcomingFeatures,
 } from "./utils/constants/LandingPageConstants";
+import "./styles.css";
 import { HowItWorksCard } from "./components/dashboard/HowItWorksCard";
 
 export const metadata: Metadata = {
@@ -80,7 +81,7 @@ export default async function Home() {
 
         <main className="flex-1 w-full items-center">
           {/* Hero Section */}
-          <section className="py-28 md:py-48 min-h-screen">
+          <section className="py-28 md:py-48 md:min-h-screen dotted-bg">
             <div className="px-4 md:px-6">
               <div className="flex flex-col items-center text-center space-y-4 md:space-y-6">
                 <div className="inline-block rounded-lg bg-primary-content px-3 py-1 text-sm text-primary">
@@ -88,7 +89,7 @@ export default async function Home() {
                 </div>
                 <h1 className="text-3xl md:text-5xl font-bold tracking-tighter max-w-3xl text-foreground">
                   {/* <TypingHeading fullText="Your AI-Powered Second Brain for the Web" /> */}
-                  Transform your Throughts Into Intelligence
+                  Transform your Thoughts Into Intelligence
                 </h1>
                 <p className="text-gray-500 md:text-xl max-w-[42rem]">
                   SynapticAI helps you capture, organize, and recall everything
@@ -131,7 +132,7 @@ export default async function Home() {
                   your online learning experience.
                 </p>
               </div>
-              {/* Mobile Features Grid */}
+              {/* Mobile Features Grid
               <div className="grid grid-cols-1 gap-8 mt-12 md:hidden">
                 {features.map((feature, index) => (
                   <FeatureCard
@@ -141,10 +142,10 @@ export default async function Home() {
                     isMobile={true}
                   />
                 ))}
-              </div>
+              </div> */}
 
               {/* Large screens Features Grid*/}
-              <div className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 hidden md:grid">
+              <div className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 grid">
                 {features.map((feature, index) => (
                   <FeatureCard
                     key={index}
@@ -213,7 +214,7 @@ export default async function Home() {
                   We're constantly improving SynapticAI. Here's what's coming
                   next:
                 </p>
-                {/* Mobiles Grid */}
+                {/* Mobiles Grid
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 text-left md:hidden">
                   {upcomingFeatures.map((feature, index) => (
                     <FeatureCard
@@ -223,9 +224,9 @@ export default async function Home() {
                       isMobile={true}
                     />
                   ))}
-                </div>
+                </div> */}
                 {/* Desktops Grid */}
-                <div className="grid-cols-1 md:grid-cols-2 gap-8 mt-12 text-left hidden md:grid">
+                <div className="grid-cols-1 md:grid-cols-2 gap-8 mt-12 text-left grid">
                   {upcomingFeatures.map((feature, index) => (
                     <FeatureCard
                       key={index}
